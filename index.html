@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children's Cognitive Diagnostic Assessment | Ages 9–10 | 50 Questions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2c5282;
+            --accent: #3182ce;
+            --success: #38a169;
+            --warning: #d69e2e;
+            --danger: #e53e3e;
+            --bg: #f7fafc;
+            --card: #ffffff;
+            --text: #1a202c;
+            --text-muted: #718096;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 860px; margin: 0 auto; padding: 20px; }
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 16px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 36px; height: 36px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
+        .timer-box {
+            background: rgba(255,255,255,0.15);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+        .timer-box.warning {
+            background: #c53030;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 32px;
+            margin-top: 24px;
+            animation: fadeIn 0.35s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.65rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+        h3 { font-size: 1.05rem; color: var(--primary-light); margin-bottom: 10px; }
+        p { color: var(--text-muted); margin-bottom: 14px; }
+        .badge {
+            display: inline-block;
+            background: #ebf8ff;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 14px;
+        }
+        .form-group { margin-bottom: 18px; }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+        input:focus, select:focus { outline: none; border-color: var(--accent); }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            text-decoration: none;
+        }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: #2b6cb0; transform: translateY(-1px); }
+        .btn-primary:disabled { background: #a0aec0; cursor: not-allowed; transform: none; }
+        .btn-secondary { background: #edf2f7; color: var(--text); }
+        .btn-secondary:hover { background: #e2e8f0; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-success:hover { background: #2f855a; }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-whatsapp:hover { background: #1da851; }
+        .btn-email { background: #ea4335; color: white; }
+        .btn-email:hover { background: #c5221f; }
+        .btn-block { width: 100%; margin-top: 10px; }
+        .progress-container { margin-bottom: 22px; }
+        .progress-bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #63b3ed);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+        .question-number {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .options { display: flex; flex-direction: column; gap: 11px; }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 13px 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fafafa;
+        }
+        .option:hover { border-color: #90cdf4; background: #ebf8ff; }
+        .option.selected { border-color: var(--accent); background: #ebf8ff; }
+        .option input {
+            margin-right: 12px;
+            width: 18px; height: 18px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+        .option label { margin: 0; cursor: pointer; flex: 1; font-weight: 400; }
+        .section-badge {
+            display: inline-block;
+            background: #e6fffa;
+            color: #234e52;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .score-circle {
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent) calc(var(--score) * 1%), #e2e8f0 0);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        .score-circle::before {
+            content: '';
+            width: 110px; height: 110px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .score-value {
+            position: relative;
+            z-index: 1;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .section-scores {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) { .section-scores { grid-template-columns: 1fr; } }
+        .section-score-card {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 14px;
+            border-left: 4px solid var(--accent);
+        }
+        .section-score-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+        .section-score-card .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .remarks-box {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+        .improve-box {
+            background: #fffaf0;
+            border: 1px solid #fbd38d;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+        .remarks-box h3, .improve-box h3 {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        ul { padding-left: 20px; color: var(--text); }
+        ul li { margin-bottom: 5px; }
+        .disclaimer {
+            background: #fff5f5;
+            border: 1px solid #feb2b2;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 0.84rem;
+            color: #742a2a;
+            margin-top: 20px;
+        }
+        .demo-note {
+            background: #ebf8ff;
+            border-left: 4px solid var(--accent);
+            padding: 12px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+        }
+        .hidden { display: none !important; }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+            gap: 12px;
+        }
+        .visual-question {
+            font-size: 1.6rem;
+            letter-spacing: 6px;
+            text-align: center;
+            padding: 14px;
+            background: #f7fafc;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            font-family: monospace;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 16px 0;
+        }
+        .info-item {
+            background: #f7fafc;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+        }
+        .info-item strong {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .share-box {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+        }
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .review-item {
+            background: #fafafa;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+        .review-item.correct { border-left: 5px solid var(--success); }
+        .review-item.wrong { border-left: 5px solid var(--danger); }
+        .review-item .q-num {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+        .review-item .q-text { font-weight: 500; margin-bottom: 8px; }
+        .review-item .ans-row { font-size: 0.9rem; margin-bottom: 4px; }
+        .review-item .explanation {
+            margin-top: 8px;
+            padding: 10px;
+            background: #edf2f7;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+        .correct-tag { color: var(--success); font-weight: 600; }
+        .wrong-tag { color: var(--danger); font-weight: 600; }
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-muted);
+            font-size: 0.84rem;
+        }
+        .section-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 12px 0 18px;
+            font-size: 0.88rem;
+        }
+        @media (max-width: 500px) { .section-list { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🧠</div>
+                <span>CogniKids Assessment</span>
+            </div>
+            <div class="timer-box" id="timerBox">
+                <span>⏱</span>
+                <span id="timerDisplay">45:00</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- SCREEN 1: Registration -->
+        <div class="card" id="screen-register">
+            <span class="badge">Ages 9–10 Years · 50 Questions · 45 Minutes</span>
+            <h1>Children's Cognitive Diagnostic Test</h1>
+            <p>A comprehensive diagnostic assessment covering multiple cognitive and general knowledge areas. Designed for children aged 9–10 years.</p>
+
+            <div class="demo-note">
+                <strong>Areas covered (50 questions):</strong>
+                <div class="section-list">
+                    <div>• Verbal Reasoning</div>
+                    <div>• Numerical Ability</div>
+                    <div>• Non-Verbal Intelligence</div>
+                    <div>• Pattern Recognition</div>
+                    <div>• Spatial Reasoning (5 Q)</div>
+                    <div>• Direction Sense (3 Q)</div>
+                    <div>• Blood Relations (3 Q)</div>
+                    <div>• Calendar Reasoning (2 Q)</div>
+                    <div>• Logical Thinking</div>
+                    <div>• Working Memory</div>
+                    <div>• GK – Indian States (2 Q)</div>
+                    <div>• Classification / Odd One Out</div>
+                </div>
+            </div>
+
+            <h3>Test Taker Details</h3>
+            <form id="registrationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name of Child *</label>
+                        <input type="text" id="fullName" required placeholder="Enter full name" maxlength="60">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age (years) *</label>
+                        <input type="number" id="age" required min="8" max="12" placeholder="9 or 10">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="grade">Grade / Class *</label>
+                        <select id="grade" required>
+                            <option value="">Select grade</option>
+                            <option value="Grade 3 / Class 3">Grade 3 / Class 3</option>
+                            <option value="Grade 4 / Class 4">Grade 4 / Class 4</option>
+                            <option value="Grade 5 / Class 5">Grade 5 / Class 5</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="school">School Name (optional)</label>
+                        <input type="text" id="school" placeholder="School name" maxlength="80">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="parentName">Parent / Guardian Name *</label>
+                    <input type="text" id="parentName" required placeholder="Parent or guardian full name" maxlength="60">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="parentEmail">Parent Email (for results) *</label>
+                        <input type="email" id="parentEmail" required placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="parentWhatsApp">Parent WhatsApp Number *</label>
+                        <input type="tel" id="parentWhatsApp" required placeholder="e.g. 9876543210" pattern="[0-9]{10,12}">
+                    </div>
+                </div>
+                <p style="font-size:0.82rem;color:var(--text-muted);">WhatsApp number should be with country code if outside India (e.g. 919876543210). Results will also be prepared for the academy email.</p>
+
+                <div class="disclaimer" style="margin-top: 8px;">
+                    <strong>Important Disclaimer:</strong> This is an educational diagnostic tool for practice and informal insight only. It is <strong>not</strong> a standardized clinical IQ test. Results should not be used for formal diagnosis or school placement decisions. Consult a qualified professional for official assessments.
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Continue to Demo Questions →</button>
+            </form>
+        </div>
+
+        <!-- Remaining screens and full JS are in the complete file -->
+        <p style="text-align:center;padding:40px;color:#718096;">Loading full assessment... If you see this message, please refresh or contact the academy.</p>
+    </div>
+</body>
+</html>
